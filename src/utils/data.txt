@@ -1,0 +1,482 @@
+INSERT INTO public."Auths"(
+	id, email, password, rol, "isBanned", "createdAt", "updatedAt")
+	VALUES 
+    ('8f648138-ae82-11ed-afa1-0242ac120002', 'colegio1@example.com', 'password1', 1, false, '2023-02-17 10:00:00', '2023-02-17 10:00:00'),
+    ('8f648458-ae82-11ed-afa1-0242ac120002', 'colegio2@example.com', 'password2', 1, false, '2023-02-17 11:00:00', '2023-02-17 11:00:00'),
+    ('8f6485e8-ae82-11ed-afa1-0242ac120002', 'colegio3@example.com', 'password3', 1, false, '2023-02-17 12:00:00', '2023-02-17 12:00:00'),
+    ('8f6486f6-ae82-11ed-afa1-0242ac120002', 'colegio4@example.com', 'password4', 1, false, '2023-02-17 13:00:00', '2023-02-17 13:00:00'),
+    ('8f6487fa-ae82-11ed-afa1-0242ac120002', 'colegio5@example.com', 'password5', 1, false, '2023-02-17 14:00:00', '2023-02-17 14:00:00'),
+    ('8f6488fe-ae82-11ed-afa1-0242ac120002', 'colegio6@example.com', 'password6', 1, false, '2023-02-17 15:00:00', '2023-02-17 15:00:00'),
+    ('8f648a5c-ae82-11ed-afa1-0242ac120002', 'colegio7@example.com', 'password7', 1, false, '2023-02-17 16:00:00', '2023-02-17 16:00:00'),
+    ('8f648b56-ae82-11ed-afa1-0242ac120002', 'colegio8@example.com', 'password8', 1, false, '2023-02-17 17:00:00', '2023-02-17 17:00:00'),
+    ('8f648c5a-ae82-11ed-afa1-0242ac120002', 'colegio9@example.com', 'password9', 1, false, '2023-02-17 18:00:00', '2023-02-17 18:00:00'),
+    ('8f648d68-ae82-11ed-afa1-0242ac120002', 'colegio10@example.com', 'password10', 1, false, '2023-02-17 19:00:00', '2023-02-17 19:00:00'),
+    ('8f648e62-ae82-11ed-afa1-0242ac120002', 'colegio11@example.com', 'password11', 1, false, '2023-02-17 20:00:00', '2023-02-17 16:00:00'),
+    ('8f648fa2-ae82-11ed-afa1-0242ac120002', 'colegio12@example.com', 'password12', 1, false, '2023-02-17 21:00:00', '2023-02-17 17:00:00'),
+    ('8f649092-ae82-11ed-afa1-0242ac120002', 'colegio13@example.com', 'password13', 1, false, '2023-02-17 22:00:00', '2023-02-17 18:00:00'),
+    ('8f6491a0-ae82-11ed-afa1-0242ac120002', 'colegio14@example.com', 'password14', 1, false, '2023-02-17 23:00:00', '2023-02-17 19:00:00');
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('3409aa1d-cbbf-48de-8cfb-29b46dd0aabf', 'Juan', 'Perez', 'Champagnat', 'champagnat', 'Prol. Paseo de la RepuÌblica 7930 - 7931', 20160516161, 1657, 1927, 'Angela Montoya','https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1486&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 50000, 7, 'V242+M4 Santiago de Surco', 'Referencia' , 0, 'El estudiante es el sentido de nuestro ser y quehacer educativo, protagonista de su propia formaciÃ³n. Cultivamos su autonomÃ­a, autoestima y participaciÃ³n activa en el proceso enseÃ±anza-aprendizaje. Inspirados en la PedagogÃ­a Marista, cuidamos no solo su formaciÃ³n intelectual, sino tambiÃ©n su desarrollo fÃ­sico, espiritual, moral, artÃ­stico y psicolÃ³gico.', 'Les damos la bienvenida al Colegio Champagnat, donde ofrecemos a nuestros estudiantes y familias una formaciÃ³n integral y centrada en valores, propia de un colegio catÃ³lico, manteniendo siempre un enfoque innovador e internacional, que responda a las necesidades de educar en la diversidad y multiculturalidad.', 141, 8.3, '8f648138-ae82-11ed-afa1-0242ac120002', 1 , 15, 180, 5, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('a0b9951f-595b-4256-a552-6cb94e07d001', 'Maria', 'Rebaño', 'Juan Pablo Peregrino', 'juan-pablo-peregrino', 'Av. San MartÃ­n de Porres Este 169', 20523295315, 286, 1985, 'Iris Guadalupe Escudero VÃ¡squez', 'https://images.unsplash.com/flagged/photo-1554473675-d0904f3cbf38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 400, 5, '2XJX+FC San Juan de Lurigancho','Referencia' , 0, 'Pendiente de envÃ­o', 'Juan Pablo Peregrino', 20, 0, '8f648458-ae82-11ed-afa1-0242ac120002', 1 , 15, 180, 5, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('13b57af0-d887-4bb5-ba41-f5d3f38c650b', 'Jose Andrés', 'Romero', 'Santa Rosa de Lima', 'santa-rosa-de-lima', 'Calle Joaquin Bernal 650', 20140658571, 809, 1952, 'Schun Castillo, Marco', 'https://images.unsplash.com/flagged/photo-1554473675-d0904f3cbf38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 4300, 3, 'Joaquin Bernal 650, Lince 15073','Referencia' , 0,  'Brindamos una educaciÃ³n integral, que se caracteriza por su excelencia acadÃ©mica, sÃ³lida formaciÃ³n cristiana y moral, de este modo creamos oportunidades para que el educando desarrolle libre y creativamente sus potencialidades.', 'El colegio parroquial Santa Rosa de Lima es una propuesta educativa dispuesta a asumir el reto de marcar la diferencia y transformar el mundo en un lugar mejor para todos.', 125, 8.1, '8f6485e8-ae82-11ed-afa1-0242ac120002', 1 , 15, 180, 5, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('472eabce-9844-4573-a6bf-b80bd2c83d52', 'Gabriela', 'Zambrano', 'San Antonio de Padua', 'san-antonio-de-padua', 'Av. Estados Unidos 569', 20140964850, 1665, 1957, 'Chang Lam, German', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 5000, 3, 'Av. San Felipe 571, JesÃºs MarÃ­a 15072','Referencia' , 0,  'SOMOS UNA COMUNIDAD EDUCATIVA FRANCISCANA, CRISTIANA Y MISIONERA QUE OFRECE UNA EDUCACIÃN DE CALIDAD FORMANDO INTEGRALMENTE PERSONAS DE PAZ Y BIEN', 'SOMOS UNA COMUNIDAD EDUCATIVA FRANCISCANA, CRISTIANA Y MISIONERA QUE OFRECE UNA EDUCACIÃN DE CALIDAD FORMANDO INTEGRALMENTE PERSONAS DE PAZ Y BIEN', 38, 7.4, '8f6486f6-ae82-11ed-afa1-0242ac120002', 1 , 15, 180, 5, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('55049bcf-df20-4238-9576-9f5258947aea', 'Manuel', 'Nuñez', 'Sor Rosa de Larrabure', 'sor-rosa-de-larrabure', 'Calle Samuel Velarde 110', 20295324784, 644, 1943, 'Patricia Arias Tataje', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 9800, 3, 'C. Samuel Velarde 110, San Isidro 15076','Referencia' , 0,  'La educaciÃ³n que se imparte en el colegio tiende al desarrollo holÃ­stico y armÃ³nico de la persona, bajo la esencia del carisma Mariano Vicentino. Fomentamos una educaciÃ³n que ayude a cada alumna a adquirir el conocimiento, el desarrollo de competencias y sobre todo el crecimiento personal a travÃ©s del desarrollo de virtudes cristianas que tiendan al bien comÃºn. Planteando de esta manera una formaciÃ³n intelectual, cultural y espiritual.', 'Somos un centro educativo catÃ³lico con carisma Mariano Vicentino, formando persona segÃºn el enfoque holÃ­stico, con gran sentido de servicio al prÃ³jimo.', 18, 6.5, '8f6487fa-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 2, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('4ec70477-44bb-40ac-a15c-892a4c3bc60e', 'Juan Cesar', 'Paredes', 'San Francisco de Borja', 'san-francisco-de-borja', 'Calle VelÃ¡squez 3er. cuadra s/n', 20111581291, 879, 1967, 'Chino Rivera, JosÃ© Luis', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 12000, 7, 'W252+PH San Borja','Referencia' , 0,  'El Centro Educativo Particular âSan Francisco de Borjaâ es una pastoral de la CongregaciÃ³n de los Misioneros de la Preciosa Sangre (C.PP.S.), creada por resoluciÃ³n ministerial NÂº 287, del 27 de febrero de 1967. Somos una InstituciÃ³n que formamos personas para la construcciÃ³n de una nueva sociedad, que defienda la vida como valor supremo. </p><p>Nuestra inspiraciÃ³n es humanista, cristiana â catÃ³lica y misionera, centrada en la persona humana llamada a vivir en el amor. La formaciÃ³n en valores es nuestra ventaja competitiva en el Ã¡mbito educativo y una permanente exigencia y rigurosidad acadÃ©mica. Nos esforzamos para que nuestros alumnos logren autonomÃ­a para el aprendizaje.', 'Somos una InstituciÃ³n que formamos personas para la construcciÃ³n de una nueva sociedad, que defienda la vida como valor supremo. Nuestra inspiraciÃ³n es humanista, cristiana â catÃ³lica y misionera, centrada en la persona humana llamada a vivir en el amor.', 52, 7.9, '8f6488fe-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 4, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('16c1626c-742d-4743-acb7-089d21b54e78', 'David', 'Cruz', 'Cristo Rey', 'cristo-rey', 'Av. Abraham Lincoln 235', 20111579980, 632, 1965, 'Juan Capurro Quimper', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 10300, 3, 'WWGG+W6 Lima','Referencia' , 0,  'Somos una InstituciÃ³n Educativa de carÃ¡cter catÃ³lico y privado, que educa niÃ±as y adolescentes, fundamentada en la filosofÃ­a de las Religiosas Hijas de Cristo Rey. Sustentamos nuestro quehacer pedagÃ³gico en una formaciÃ³n evangelizadora, educando la mente en la bÃºsqueda de la Verdad y fortaleciendo el corazÃ³n en el Bien, brindando a nuestras estudiantes una educaciÃ³n integral de calidad, con un alto nivel acadÃ©mico y sÃ³lida formaciÃ³n en valores humano cristianos, para transformar la familia y la sociedad haciendo que Cristo reine.', 'Somos una InstituciÃ³n educativa dirigida por el INSTITUTO DE RELIGIOSAS HIJAS DE CRISTO REY. Orientamos nuestra misiÃ³n hacia una educaciÃ³n integral formando estudiantes con espÃ­ritu crÃ­tico, reflexivo y creativo, fomentamos el desarrollo de sus cualidades individuales en un clima de libertad responsable, a travÃ©s de una metodologÃ­a actualizada, activa, creativa y la formaciÃ³n permanente de valores.', 68, 7.8, '8f648a5c-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 15, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('29bc533e-ed84-498d-b6fd-0a67eb8e71f9', 'Manuel', 'Romero', 'San Charbel', 'san-charbel', 'Jiron Arica 800', 20348800699, 362, 1992, 'Manuel Ato FernÃ¡ndez', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 6300, 3, 'JirÃ³n Arica 800, San Miguel 15086','Referencia' , 0,  'Somos un colegio de varones, que ofrece educaciÃ³n personalizada, orientado en formar hombres educados en la competencia y excelencia acadÃ©mica, con Ã©nfasis en la enseÃ±anza del idioma inglÃ©s. Educamos integralmente a los alumnos para que enfrenten el mundo de hoy y al que nos proyectamos, con los valores de honestidad, solidaridad y responsabilidad, para que sean buenos ciudadanos, ejemplares padres de familia y practicantes de su fe.', 'Somos un colegio de varones, que ofrece educaciÃ³n personalizada, orientado en formar hombres educados en la competencia y excelencia acadÃ©mica.', 180, 6.8, '8f648b56-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 20, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('78c72940-15dc-470a-b73a-1ce71e50ea49', 'Emanuel', 'Perez', 'San Jose de Cluny', 'san-jose-de-cluny', 'Calle Las Ãguilas 395', 20137992451, 763, 1963, 'Sayumi Higa, Consuelo', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 7300, 7, 'C. Las Aguilas 395, Surquillo 15047','Referencia' , 0,  'En el Colegio San JosÃ© de Cluny se entiende por metodologÃ­a como el uso de diferentes estrategias para propiciar el desarrollo de procesos cognitivos, socio â afectivos y motores en relaciÃ³n con el entorno en el que se desenvuelve el estudiante, favoreciendo el desarrollo de capacidades, conocimientos y actitudes.', 'Nuestra InstituciÃ³n tiene como objetivo formar integralmente al estudiante, por ello el enfoque por competencias orienta el âsaber ser, saber hacer y saber actuarâ en situaciones concretas, permitiÃ©ndole lograr con Ã©xito determinada tarea en diferentes contextos.', 93, 7.3, '8f648c5a-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 7, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('e0f6a233-9d1f-4ad4-af79-7842711ff570', 'Alberto', 'Laura', 'El Buen Pastor', 'el-buen-pastor', 'Jr. Aries 782 Urb. Mercurio', 20218819533, 2012, 1965, 'Arata Hurtado, Fernando ', 'https://images.unsplash.com/photo-1598275930846-a20f96dfa1ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1596&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 8500, 2, 'Jr. Aries 899-807, Lima 15301','Referencia' , 0,  'Somos un Centro Educativo de la Iglesia CatÃ³lica perteneciente a la DiÃ³cesis de Carabayllo que forma hombres y mujeres para la vida en base a la educaciÃ³n familiar y los valores del evangelio, con el fin que el estudiante responda a las exigencias sociales, culturales, cientÃ­ficas y tecnolÃ³gicas.', 'El Centro Educativo Parroquial Diocesano âEl Buen Pastorâ brinda servicios educativos de calidad en los niveles de inicial, primaria y secundaria, forma hombres y mujeres para la vida sobre la base de la educaciÃ³n familiar y los evangelios, con el fin de que el estudiante responda a las exigencias sociales, culturales, cientÃ­ficas y tecnolÃ³gicas.', 35, 7.5, '8f648d68-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 27, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('f8654e6e-a7af-4e7d-b79a-6c7de1c17701', 'Dina', 'Boluarte', 'Altair', 'altair', 'Av. La Arboleda 385, Urb. Sirius', 20263827776, 892, 1995, 'Natasha Malachowski', 'https://images.unsplash.com/photo-1598275930846-a20f96dfa1ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1596&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 7300, 6, 'La Arboleda 385, La Molina 15024','Referencia' , 0,  'Nuestra visiÃ³n es ser una instituciÃ³n que fomente una experiencia educativa de excelencia acadÃ©mica, asumiendo un compromiso con el desarrollo emocional de sus alumnos y el entendimiento de cada uno en particular. La misiÃ³n que nos hemos propuesto es formar personas Ã­ntegras, responsables, sensibles, seguras de sÃ­ mismas; con pasiÃ³n por el aprendizaje y miembros comprometidos de una comunidad global.', 'El colegio ubicado en Lima, PerÃº, es un colegio IB que cuenta con la acreditaciÃ³n para tres de sus programas:&nbsp;PEP,&nbsp;PAI&nbsp;y&nbsp;IB Diploma. Es un colegio que a travÃ©s de una educaciÃ³n personalizada y de calidad, busca satisfacer las necesidades intelectuales, fÃ­sicas, emocionales y sociales de sus estudiantes.', 180, 7.8, '8f648e62-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 5, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('f9054792-b2b1-4160-8625-2e07b26e4bf1', 'Pedro', 'Castillo', 'Claretiano', 'claretiano', 'Auxiliar Parque de las Leyendas 555', 20140900452, 1753, 1934, 'JesÃºs, Osset Olleta', 'https://images.unsplash.com/photo-1598275930846-a20f96dfa1ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1596&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 48000, 3, 'Auxiliar Parque de las Leyendas 555, San Miguel 15088','Referencia' , 0,  'Somos una InstituciÃ³n de calidad certificada que pretende seguir mejorando con el apoyo de sus padres de familia, alumnos y ex alumnos en cuya mente y corazones late perpetuo su lema: SER CLARETIANO ES SER CADA DIA MEJOR. Fundamentamos nuestro accionar en una formaciÃ³n catÃ³lica, eficaz y eficiente y satisfacemos las necesidades y expectativas de los padres de familia y apoderados, mediante el trabajo de nuestro personal docente y administrativo, comprometido con la mejora continua de los procesos de nuestro Sistema de GestiÃ³n de la Calidad Educativa.', 'Somos una InstituciÃ³n de calidad certificada que pretende seguir mejorando con el apoyo de sus padres de familia, alumnos y ex alumnos en cuya mente y corazones late perpetuo su lema: SER CLARETIANO ES SER CADA DIA MEJOR. Fundamentamos nuestro accionar en una formaciÃ³n catÃ³lica, eficaz y eficiente y satisfacemos las necesidades y expectativas de los padres de familia y apoderados, mediante el trabajo de nuestro personal docente y administrativo, comprometido con la mejora continua de los procesos de nuestro Sistema de GestiÃ³n de la Calidad Educativa.', 105, 6.8, '8f648fa2-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 7, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('54eeb37f-c2ed-4bc8-8a00-8f8d72d1ce5d', 'Evelyn', 'Nuñez', 'Mater Admirabilis', 'mater-admirabilis', 'Av. Arica 898', 20302024066, 619, 1950, 'Silvia RodrÃ­guez Escudero', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 6200, 3, 'La Mar 237, San Miguel 15086','Referencia' , 0,  'Nuestra instituciÃ³n promueve la formaciÃ³n de niÃ±as y adolescentes integras, &nbsp;autorreguladas, flexibles y felices. Actualmente nuestra instituciÃ³n ha incorporado a su misiÃ³n el Perfil de la comunidad Educativa del Bachillerato Internacional, que busca alentar a las estudiantes a ser indagadoras, informadas, instruidas, buenas comunicadoras, pensadoras, integras, de mentalidad abierta, solidarias, audaces, equilibradas y reflexivas. Mater Admirabilis es una instituciÃ³n educativa que promueve una educaciÃ³n de excelencia y un desarrollo armÃ³nico e integral con el fin de preparar a sus alumnas como ciudadanas competentes, capaces de aprender a aprender y que creen consciencia de seres valiosos, tanto en unicidad como en la diversidad de la que son parte, ya sea en su comunidad como en el mundo.', 'Nuestra misiÃ³n es formar niÃ±as y jÃ³venes lideres, flexibles &nbsp;preparadas para afrontar los retos de un mundo globalizado competitivo, comprometidas con su paÃ­s y comunidad, ofreciÃ©ndoles una educaciÃ³n de calidad basada en valores y principios universales, con una actitud y una prÃ¡ctica de lÃ­der que les permita desarrollarse integralmente &nbsp;en los aspectos humanista, cientÃ­fico y tecnolÃ³gico, en su creatividad y autonomÃ­a optimizando al mÃ¡ximo sus potencialidades.', 45, 8.2, '8f649092-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 4, 1, 1);
+INSERT INTO public."Colegios" (id, nombre_responsable, apellidos_responsable, nombre_colegio, slug, direccion, ruc, numero_estudiantes, fecha_fundacion, nombre_director, primera_imagen, galeria_fotos, video_url, area, ugel, ubicacion, referencia_ubicacion, telefono, propuesta_valor, descripcion, horas_idioma_extranjero, rating, "idAuth", "PaisId", "DepartamentoId", "ProvinciaId", "DistritoId", "PlanPagoId" , "CategoriaId") VALUES ('76e51562-b354-4e72-8ce0-15708685f108', 'Juan', 'Ttito', 'Home School Deza', 'home-school-deza', 'Calle L Mz V Lote 19 Urb. VÃ­ctor RaÃºl Haya de la Torre', 20601898722, 400, 2001, ' Demetrio SimÃ³n Casana Vergara', 'https://images.unsplash.com/photo-1595134561159-11a5fbf6b3f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1629&q=80' , '[  "https://via.placeholder.com/400x300.png?text=Colegio+1",  "https://via.placeholder.com/400x300.png?text=Colegio+2",  "https://via.placeholder.com/400x300.png?text=Colegio+3"]' , 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4 ', 200, 2, '2WFW+GWV, Lima 15332','Referencia' , 0,  'Acorde a nuestros tiempos, Consorcio DEZA apunta a que nuestros alumnos desarrollen un alto nivel educativo en las Ã¡reas mÃ¡s importantes del plan acadÃ©mico: ComunicaciÃ³n Integral, MatemÃ¡ticas, Personal Social y Ciencia TecnologÃ­a y Ambiente (CTA). Idiomas: InglÃ©s e Italiano. AdemÃ¡s, complementamos su formaciÃ³n con materias complementarias importantes en su vida diaria: arte, educaciÃ³n religiosa, formaciÃ³n ciudadana, entre otras.</p><p id="">Para lograr nuestro fin, trabaja una plana docente de calidad para las materias requeridas. Los alumnos son orientados en la comprensiÃ³n y desarrollo del conocimiento acadÃ©mico, asÃ­ tambiÃ©n los profesores estÃ¡n prestos a apoyarlos en las dificultades que los alumnos tengan en este camino hacia el conocimiento.</p><p id="">Siempre dispuestos a asumir los desafÃ­os de nuestro tiempo, manejamos una plataforma virtual que permite que nuestros alumnos tengan al alcance material adicional que complemente el conocimiento que brinda el docente. AdemÃ¡s, nos permite una mayor evaluaciÃ³n de conocimiento de nuestros alumnos y mayores opciones de interrelaciÃ³n acadÃ©mica entre docentes y alumnos.', 'Se brinda servicio educativos del nivel inicial - primaria - secundaria - CEBA, tanto en el nivel presencial como en el nivel virtual, home-school y certificaciÃ³n escolar.', 8, 0, '8f6491a0-ae82-11ed-afa1-0242ac120002', 1, 15, 180, 7, 1, 1);
+
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('13b57af0-d887-4bb5-ba41-f5d3f38c650b', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('16c1626c-742d-4743-acb7-089d21b54e78', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('29bc533e-ed84-498d-b6fd-0a67eb8e71f9', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('3409aa1d-cbbf-48de-8cfb-29b46dd0aabf', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('472eabce-9844-4573-a6bf-b80bd2c83d52', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('4ec70477-44bb-40ac-a15c-892a4c3bc60e', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('54eeb37f-c2ed-4bc8-8a00-8f8d72d1ce5d', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('55049bcf-df20-4238-9576-9f5258947aea', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('76e51562-b354-4e72-8ce0-15708685f108', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('78c72940-15dc-470a-b73a-1ce71e50ea49', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('a0b9951f-595b-4256-a552-6cb94e07d001', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('e0f6a233-9d1f-4ad4-af79-7842711ff570', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('f8654e6e-a7af-4e7d-b79a-6c7de1c17701', 3);
+INSERT INTO public."Colegio_Idioma" ("ColegioId", "IdiomaId") VALUES ('f9054792-b2b1-4160-8625-2e07b26e4bf1', 3);
+
+
+
+INSERT INTO public."Horarios"(
+	id, "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "ColegioId")
+	VALUES ('2af93c88-b3f6-11ed-afa1-0242ac120002','[{"inicio":"08:00","fin":"09:00"},{"inicio":"10:00","fin":"11:00"},{"inicio":"14:00","fin":"15:00"}]','[{"inicio":"09:00","fin":"12:00"},{"inicio":"14:00","fin":"17:00"}]','[{"inicio":"09:00","fin":"12:00"},{"inicio":"14:00","fin":"17:00"}]','[{"inicio":"09:00","fin":"12:00"},{"inicio":"14:00","fin":"17:00"}]','[{"inicio":"09:00","fin":"12:00"},{"inicio":"14:00","fin":"17:00"}]','[{"inicio":"09:00","fin":"12:00"},{"inicio":"14:00","fin":"17:00"}]','aa033dce-69db-44de-ac7b-58a607af53a9');
+
+
+
+
+    [{"inicio":"08:00","fin":"09:00"},{"inicio":"10:00","fin":"11:00"},{"inicio":"14:00","fin":"15:00"}]
+
+
+
+
+
+
+
+
+
+
+
+('50bfed0e-8f5c-4f7a-82eb-d2a0f99c18b2', '["{\"inicio\":\"08:00\",\"fin\":\"09:00\"}","{\"inicio\":\"10:00\",\"fin\":\"11:00\"}","{\"inicio\":\"14:00\",\"fin\":\"15:00\"}"]', '["{\"inicio\":\"09:00\",\"fin\":\"12:00\"}","{\"inicio\":\"14:00\",\"fin\":\"17:00\"}"]', '["{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"13:00\",\"fin\":\"14:00\"}"]', '["{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"13:00\",\"fin\":\"14:00\"}"]', '["{\"inicio\":\"08:00\",\"fin\":\"12:00\"}","{\"inicio\":\"14:00\",\"fin\":\"16:00\"}"]', '["{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"09:00\",\"fin\":\"12:00\"}"]')
+('50bfed0e-8f5c-4f7a-82eb-d2a0f99c18b2', '{"{\"inicio\":\"08:00\",\"fin\":\"09:00\"}","{\"inicio\":\"10:00\",\"fin\":\"11:00\"}","{\"inicio\":\"14:00\",\"fin\":\"15:00\"}"}', '{"{\"inicio\":\"09:00\",\"fin\":\"12:00\"}","{\"inicio\":\"14:00\",\"fin\":\"17:00\"}"}', '{"{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"13:00\",\"fin\":\"14:00\"}"}', '{"{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"13:00\",\"fin\":\"14:00\"}"}', '{"{\"inicio\":\"08:00\",\"fin\":\"12:00\"}","{\"inicio\":\"14:00\",\"fin\":\"16:00\"}"}', '{"{\"inicio\":\"08:00\",\"fin\":\"10:00\"}","{\"inicio\":\"09:00\",\"fin\":\"12:00\"}"}','aa033dce-69db-44de-ac7b-58a607af53a9');
+
+
+
+const horarios = {
+  lunes: [
+    { inicio: '08:00', fin: '09:00' },
+    { inicio: '10:00', fin: '11:00' },
+    { inicio: '14:00', fin: '15:00' },
+  ],
+  Martes: [
+    { inicio: '09:00', fin: '12:00' },
+    { inicio: '14:00', fin: '17:00' },
+  ],
+  Miercoles: [
+    { inicio: '08:00', fin: '10:00' },
+    { inicio: '13:00', fin: '14:00' },
+  ],
+  Jueves: [
+    { inicio: '08:00', fin: '10:00' },
+    { inicio: '13:00', fin: '14:00' },
+  ],
+  Viernes: [
+    { inicio: '08:00', fin: '12:00' },
+    { inicio: '14:00', fin: '16:00' },
+  ],
+  Sabado: [
+    { inicio: '08:00', fin: '10:00' },
+    { inicio: '09:00', fin: '12:00' },
+  ],
+};
+
+
+
+
+
+[
+    {
+        "id": "a7552c5e-d8e2-4a91-bb53-b2790fc58a17",
+        "Lunes": [
+            {
+                "inicio": "08:00",
+                "fin": "09:00"
+            },
+            {
+                "inicio": "10:00",
+                "fin": "11:00"
+            },
+            {
+                "inicio": "14:00",
+                "fin": "15:00"
+            }
+        ],
+        "Martes": [
+            {
+                "inicio": "09:00",
+                "fin": "12:00"
+            },
+            {
+                "inicio": "14:00",
+                "fin": "17:00"
+            }
+        ],
+        "Miercoles": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "13:00",
+                "fin": "14:00"
+            }
+        ],
+        "Jueves": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "13:00",
+                "fin": "14:00"
+            }
+        ],
+        "Viernes": [
+            {
+                "inicio": "08:00",
+                "fin": "12:00"
+            },
+            {
+                "inicio": "14:00",
+                "fin": "16:00"
+            }
+        ],
+        "Sabado": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "09:00",
+                "fin": "12:00"
+            }
+        ],
+        "ColegioId": "62f3eafc-04f7-4eb0-874c-7e022ec8b9d5"
+    }
+]
+
+
+[
+    {
+        "id": "a7552c5e-d8e2-4a91-bb53-b2790fc58a17",
+        "Lunes": [
+            {
+                "inicio": "08:00",
+                "fin": "09:00"
+            }
+        ],
+        "Martes": [
+            {
+                "inicio": "09:00",
+                "fin": "12:00"
+            }
+        ],
+        "Miercoles": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "15:00",
+                "fin": "16:00"
+            }
+        ],
+        "Jueves": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "13:00",
+                "fin": "14:00"
+            }
+        ],
+        "Viernes": [
+            {
+                "inicio": "08:00",
+                "fin": "12:00"
+            },
+            {
+                "inicio": "18:00",
+                "fin": "20:00"
+            }
+        ],
+        "Sabado": [
+            {
+                "inicio": "08:00",
+                "fin": "10:00"
+            },
+            {
+                "inicio": "10:00",
+                "fin": "12:00"
+            }
+        ],
+        "ColegioId": "62f3eafc-04f7-4eb0-874c-7e022ec8b9d5"
+    }
+]
+
+
+
+
+
+{
+    "horarios": {
+  "Lunes": [
+    { "inicio": "08:00", "fin": "09:00" },
+    { "inicio": "10:00", "fin": "11:00" },
+    { "inicio": "14:00", "fin": "15:00" }
+  ],
+  "Martes": [
+    { "inicio": "09:00", "fin": "12:00" },
+    { "inicio": "14:00", "fin": "17:00" }
+  ],
+  "Miercoles": [
+    { "inicio": "08:00", "fin": "10:00" },
+    { "inicio": "13:00", "fin": "14:00" }
+  ],
+  "Jueves": [
+    { "inicio": "08:00", "fin": "10:00" },
+    { "inicio": "13:00", "fin": "14:00" }
+  ],
+  "Viernes": [
+    { "inicio": "08:00", "fin": "12:00" },
+    { "inicio": "14:00", "fin": "16:00" }
+  ],
+  "Sabado": [
+    { "inicio": "08:00", "fin": "10:00" },
+    { "inicio": "09:00", "fin": "12:00" }
+  ]
+},  "ColegioId": "62f3eafc-04f7-4eb0-874c-7e022ec8b9d5"
+}
+
+
+
+
+const horarios = [
+    {
+        dia: "Lunes",
+        horarios: {desde: "10:30", hasta: "13:00"},
+        vacantesDispo: 3,        
+        vacantes: "20",
+    },
+    {
+        dia: "Martes",
+        horarios: {desde: "10:30", hasta: "13:00"},
+        vacantesDispo: 3,
+        vacantes: "20",
+    },
+    {
+        dia: "Miercoles",
+        horarios: {desde: "10:30", hasta: "13:00"},
+        vacantesDispo: 3,
+        vacantes: "20",
+    },
+    {
+        dia: "Martes",
+        horarios: {desde: "10:30", hasta: "13:00"},
+        vacantesDispo: 3,
+        vacantes: "20",
+    },
+    {
+        dia: "Miercoles",
+        horarios: {desde: "10:30", hasta: "13:00"},
+        vacantesDispo: 3,
+        vacantes: "20",
+    }
+]
+
+
+
+
+// distrito -> grado -> año
+// Obtenemos data de los colegio que sean de ese distrito que tengan ese grado y vacantes
+
+
+
+
+"dia": Lunes,  
+"horarios": {
+    "desde": "9:00",
+    "hasta": "9:45",
+},
+
+
+
+        
+
+const disponibilidad = [
+    {
+        "dia": Lunes,  
+        "horarios": [
+            {
+            "desde": "9:00",
+            "hasta": "9:45",
+            },
+            {
+            "desde": "10:00",
+            "hasta": "10:45", 
+            },
+            {
+            "desde": "11:00",
+            "hasta": "11:45", 
+            }
+        ]
+    },
+     {
+        "dia": Martes,
+        "horarios": [
+            {
+            "desde": "9:00",
+            "hasta": "9:45",
+            },
+            {
+            "desde": "10:00",
+            "hasta": "10:45", 
+            },
+            {
+            "desde": "11:00",
+            "hasta": "11:45", 
+            }
+        ]
+    },
+     {
+        "dia": MIercoles,
+        "horarios": [
+            {
+            "desde": "9:00",
+            "hasta": "9:45",
+            },
+            {
+            "desde": "10:00",
+            "hasta": "10:45", 
+            },
+            {
+            "desde": "11:00",
+            "hasta": "11:45", 
+            }
+        ]
+    }
+]
+
+
+const nuevoHorario = [
+    {
+        dia: 'Lunes',
+        horarios: ['10:00-10:45', '11:00-11:45', '12:00-12:45'],
+    },
+    {
+        dia: 'Martes',
+        horarios: ['10:00-10:45', '11:00-11:45', '12:00-12:45'],
+    },
+    {
+        dia: 'Miercoles',
+        horarios: ['10:00-10:45', '11:00-11:45', '12:00-12:45'],
+    },
+    {
+        dia: 'Jueves',
+        horarios: ['10:00-10:45', '11:00-11:45', '12:00-12:45'],
+    },
+    {
+        dia: 'Viernes',
+        horarios: ['10:00-10:45', '11:00-11:45', '12:00-12:45'],
+    }
+];
+
+
+
+
+
+vacantes
+{
+    7: { capacidad: '500', alumnos: '50', cuota_ingreso: '123', matricula: '43', cuota_pension: '233' },
+    8: { capacidad: '500', alumnos: '50', cuota_ingreso: '123', matricula: '43', cuota_pension: '233' },
+    'año': 2023
+  }
+
+
+{
+7: {capacidad: '100', alumnos: '10', matricula: '1200', cuota_pension: '800', cuota_ingreso: '1200'}
+8: {capacidad: '100', alumnos: '20', matricula: '1300', cuota_pension: '900', cuota_ingreso: '1200'}
+9: {capacidad: '120', alumnos: '100', matricula: '1400', cuota_pension: '900', cuota_ingreso: '1000'}
+10: {capacidad: '100', alumnos: '20', matricula: '1500', cuota_pension: '900', cuota_ingreso: '1000'}
+11: {capacidad: '100', alumnos: '20', matricula: '1600', cuota_pension: '500', cuota_ingreso: '1100'}
+12: {capacidad: '50', alumnos: '20', matricula: '1700', cuota_pension: '500', cuota_ingreso: '1100'}
+año: 2023
+}
+
+
+
+const horarios = {
+  lunes: [
+    { inicio: '08:00', fin: '09:00' },
+  ],
+  Martes: [
+    { inicio: '09:00', fin: '12:00' },
+  ],
+  Miercoles: [
+    { inicio: '08:00', fin: '10:00' },
+  ],
+  Jueves: [
+    { inicio: '08:00', fin: '10:00' },
+  ],
+  Viernes: [
+    { inicio: '08:00', fin: '12:00' },
+  ],
+};
+
+
+const horariosAhora = {
+  lunes: [
+    { inicio: '08:00', fin: '09:00' },
+  ],
+  Martes: [
+    { inicio: '09:00', fin: '12:00' },
+  ],
+};
+
+
+
+
+
+
+Rutas a CACHE
+
+// 24h
+Pais
+Departamento
+Provincia
+Niveles
+Idiomas
+Distritos
+Grado
+Metodos
+dificultades
+Tipos de colegio
+Infraestructuras
+Lista de Espera
+
+// 1hr
+Eventos
