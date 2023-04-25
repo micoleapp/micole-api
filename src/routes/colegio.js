@@ -146,6 +146,7 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
             "id",
             "nombre_infraestructura",
             "InfraestructuraTipoId",
+            "imagen"
           ],
           through: {
             attributes: [],
