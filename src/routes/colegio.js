@@ -551,15 +551,18 @@ router.put("/multimedia/:id", async (req, res) => {
     if (multimedia) {
       video_url = multimedia.video_url;
       primera_imagen = multimedia.image;
-      galeria_fotos = JSON.stringify(multimedia.images);
+      galeria_fotos = multimedia.images;
       logo = multimedia.logo;
     }
-
+    const colegio = Colegio.findByPk(id);
+    const planDePago = Plan_Pago.findByPk(colegio.PlanPagoId);
+    const cantidadFotos = planDePago.cantidad_fotos;
+    const editedGaleriaFotos = galeria_fotos.slice(0, cantidadFotos);
     const editedColegio = await Colegio.update(
       {
         //multimedia
         primera_imagen: primera_imagen,
-        galeria_fotos: galeria_fotos,
+        galeria_fotos: JSON.stringify(editedGaleriaFotos),
         video_url: video_url,
         logo: logo,
       },

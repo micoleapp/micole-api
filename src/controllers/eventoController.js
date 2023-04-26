@@ -1,5 +1,6 @@
 const { Evento, Colegio, User, Auth } = require('../db');
 const moment = require('moment');
+const {Sequelize} = require('sequelize');
 
 const getEventosColegio = async (req, res, next) => {
   const tokenUser = req.user;
@@ -40,9 +41,23 @@ const getEventosColegio = async (req, res, next) => {
         where: {
           ColegioId: colegio.id,
         },
+        include: [{
+          model: User,
+        }],
         order: orderBy || [['fecha_evento', 'ASC']],
       });
-      res.status(200).send(eventos);
+
+      const sanitiziedEventos = eventos.map((evento) => {
+        const cantidadUsuarios = evento.Users.length;
+        return {
+          ...evento.toJSON(),
+          Users: { 
+            cantidadInscritos: cantidadUsuarios, 
+          }
+        };
+      });
+
+      res.status(200).send(sanitiziedEventos);
     } else {
       const user = await User.findOne({ where: { idAuth: authInstance.id } });
       if (!user) {
