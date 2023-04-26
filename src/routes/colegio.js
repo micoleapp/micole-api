@@ -136,9 +136,10 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
   try {
     const { Colegio_id } = req.params;
     console.log(Colegio_id);
+
     const cole = await Colegio.findAll({
       where: { id: [Colegio_id] },
-      attributes:["nombre_colegio"],
+      attributes: ["nombre_colegio"],
       include: [
         {
           model: Infraestructura,
@@ -146,14 +147,13 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
             "id",
             "nombre_infraestructura",
             "InfraestructuraTipoId",
-            "imagen"
+            "imagen",
           ],
           through: {
             attributes: [],
           },
         },
       ],
-      
     });
     console.log(cole);
     res.json(cole);
@@ -161,60 +161,118 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
     res.json({ err });
   }
 }),
-
-//------- PEDIR LAS AFILIACIONES DE UNO DE LOS COLEGIOS POR ID--------
-router.get("/afiliacion/:Colegio_id", async (req, res) => {
-  try {
-    const { Colegio_id } = req.params;
-    console.log(Colegio_id);
-    const cole = await Colegio.findAll({
-      where: { id: [Colegio_id] },
-      attributes:["nombre_colegio"],
-      include: [
-    
-        {
-          model: Afiliacion,
-          attributes: [
-            "id",
-            "nombre_afiliacion",
-            "Afiliacion_tipo_Id",
-            "logo",
-          ],
-          through: {
-            attributes: [],
+  //------- PEDIR LAS AFILIACIONES DE UNO DE LOS COLEGIOS POR ID--------
+  router.get("/afiliacion/:Colegio_id", async (req, res) => {
+    try {
+      const { Colegio_id } = req.params;
+      // console.log(Colegio_id);
+      const cole = await Colegio.findAll({
+        where: { id: [Colegio_id] },
+        attributes: ["nombre_colegio"],
+        include: [
+          {
+            model: Afiliacion,
+            attributes: [
+              "id",
+              "nombre_afiliacion",
+              "Afiliacion_tipo_Id",
+              "logo",
+            ],
+            through: {
+              attributes: [],
+            },
           },
-        },
-      ],
-      
-    });
-    console.log(cole);
-    res.json(cole);
-  } catch (err) {
-    res.json({ err });
-  }
-}),
+        ],
+      });
+      console.log(cole);
+      res.json(cole);
+    } catch (err) {
+      res.json({ err });
+    }
+  }),
+  //------- PEDIR UNO DE LOS COLEGIOS POR ID PARA EL COMPARADOR--------
+  router.get("/comparador/:Colegio_id", async (req, res) => {
+    try {
+      const { Colegio_id } = req.params;
+      console.log(Colegio_id);
+      const totalInfraestructuras = await Colegio.findAll({
+        where: { id: [Colegio_id] },
+        attributes: ["nombre_colegio"],
+        include: [
+          {
+            model: Infraestructura,
+            attributes: ["nombre_infraestructura"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
+      const totalAfiliacion = await Colegio.findAll({
+        where: { id: [Colegio_id] },
+        attributes: ["nombre_colegio"],
+        include: [
+          {
+            model: Afiliacion,
+            attributes: ["nombre_afiliacion"],
+            through: {
+              attributes: [],
+            },
+          },
+        ],
+      });
+      const totalInfra = totalInfraestructuras[0].Infraestructuras.length;
+      const totalAfil = totalAfiliacion[0].Afiliacions.length;
+      console.log(totalInfraestructuras);
+      const cole = await Colegio.findAll({
+        where: { id: [Colegio_id] },
+        attributes: [
+          "id",
+          "nombre_colegio",
+          "direccion",
+          "numero_estudiantes",
+          "primera_imagen",
+          "galeria_fotos",
+          "area",
+          "rating",
+        ],
+        include: [
+          {
+            model: Distrito,
+            attributes: ["nombre_distrito"],
+          },
+          {
+            model: Categoria,
+            attributes: ["nombre_categoria"],
+            through: {
+              attributes: [],
+            },
+          },
+          {
+            model: Dificultades,
+            attributes: ["nombre_dificultad"],
+          },
+          {
+            model: Metodos,
+            attributes: ["nombre_metodo"],
+          },
+        ],
+      });
+      res.json({
+        Colegio: cole,
+        CountInfraestructuras: totalInfra,
+        CountAfiliaciones: totalAfil,
+      });
+    } catch (err) {
+      res.json({ err });
+    }
+  }),
   //------- PEDIR UNO DE LOS COLEGIOS POR ID--------
   router.get("/:Colegio_id", async (req, res) => {
     const { Colegio_id } = req.params;
     const tokenUser = req.user;
     const fechaActual = moment().format("YYYY-MM-DD");
     try {
-      // if (!tokenUser) {
-      //   const addVisualizacion = await Colegio.findByPk(Colegio_id);
-      //   addVisualizacion.visualizaciones =
-      //     Number(addVisualizacion.visualizaciones) + 1;
-      //   await addVisualizacion.save();
-      // }
-      // const [trafico, created] = await Trafico.findOrCreate({
-      //   where: { fecha: fechaActual, ColegioId: Colegio_id },
-      //   defaults: { visitas: 1 },
-      // });
-
-      // if (!created) {
-      //   trafico.visitas += 1;
-      //   await trafico.save();
-      // }
-
       const cole = await Colegio.findAll({
         where: { id: [Colegio_id] },
         include: [
@@ -222,10 +280,6 @@ router.get("/afiliacion/:Colegio_id", async (req, res) => {
             model: Nivel,
             attributes: ["nombre_nivel", "id"],
           },
-          // {
-          //   model: Vacante,
-          //   include: [{ model: Grado, attributes: ["nombre_grado"] }],
-          // },
           {
             model: Idioma,
             attributes: ["nombre_idioma", "id"],
@@ -283,7 +337,6 @@ router.get("/afiliacion/:Colegio_id", async (req, res) => {
               attributes: [],
             },
           },
-
         ],
       });
       res.json(cole);
