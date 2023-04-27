@@ -260,7 +260,8 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
           },
         ],
       });
- 
+      // const object = Object.assign({},cole);
+   
       res.json({
         Colegio: cole,
         CountInfraestructuras: totalInfra,
