@@ -223,6 +223,7 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
       });
       const totalInfra = totalInfraestructuras[0].Infraestructuras.length;
       const totalAfil = totalAfiliacion[0].Afiliacions.length;
+
       console.log(totalInfraestructuras);
       const cole = await Colegio.findAll({
         where: { id: [Colegio_id] },
@@ -235,6 +236,7 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
           "galeria_fotos",
           "area",
           "rating",
+          "logo"
         ],
         include: [
           {
@@ -258,9 +260,8 @@ router.get("/infraestructuras/:Colegio_id", async (req, res) => {
           },
         ],
       });
-      const object = Object.assign({}, cole)
       res.json({
-        Colegio: object,
+        Colegio: cole,
         CountInfraestructuras: totalInfra,
         CountAfiliaciones: totalAfil,
       });

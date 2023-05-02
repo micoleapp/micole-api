@@ -19,6 +19,7 @@ router.post("/notification", async (req, res) => {
   var planVencido;
   var today = new Date();
   var fechaHoy = today.toISOString().split("T")[0];
+  var mesesAcumulados;
 
   switch (topic) {
     case "payment":
@@ -44,39 +45,49 @@ router.post("/notification", async (req, res) => {
           ventas.months = merchantOrder.body.items[0].quantity;
           ventas.PlanPagoId = merchantOrder.body.items[0].id;
 
+          const description = merchantOrder.body.items[0].description;
           const plan = merchantOrder.body.items[0].id;
           const planNombre = merchantOrder.body.items[0].title;
           const idColegio = merchantOrder.body.external_reference;
           const email = merchantOrder.body.additional_info;
           //caso 1 compra por primera vez
           // caso 2 compra el mismo plan
-
           planVencido = await Ventas.findOne({
             where: {
               ColegioId: idColegio,
               activo: true,
             },
           });
-          console.log(planVencido);
+          //se comprueba si existen compras anteriores y también si no a caducado la compra anterior, para sumar los meses faltantes
+          //a los de la compra anterior
+          if (description === "igual") {
+            if (
+              planVencido !== null &&
+              fechaHoy <= planVencido.vencimientoPlan
+            ) {
+              fecha = new Date(planVencido.vencimientoPlan);
+              fecha.setMonth(
+                fecha.getMonth() + Number(merchantOrder.body.items[0].quantity)
+              );
+              ventas.accumulated_months =
+                ventas.accumulated_months +
+                Number(merchantOrder.body.items[0].quantity);
+            } else {
+              //si ya venció se deja la fecha de compra mas los meses comprados
+              fecha = merchantOrder.body.payments[0].date_approved;
+              fecha = new Date(fecha);
 
-          if (planVencido === null) {
-          }
-          if (planVencido && fechaHoy <= planVencido.vencimientoPlan) {
-            fecha = new Date(planVencido.vencimientoPlan);
-            fecha.setMonth(
-              fecha.getMonth() + Number(merchantOrder.body.items[0].quantity)
-            );
+              fecha.setMonth(
+                fecha.getMonth() + Number(merchantOrder.body.items[0].quantity)
+              );
+              ventas.accumulated_months = Number(
+                merchantOrder.body.items[0].quantity
+              );
+            }
           } else {
-            fecha = merchantOrder.body.payments[0].date_approved;
-            fecha = new Date(fecha);
-
-            fecha.setMonth(
-              fecha.getMonth() + Number(merchantOrder.body.items[0].quantity)
-            );
+            fecha = planVencido.vencimientoPlan;
           }
-
-          planVencido.activo ? (planVencido = false) : (planVencido = true);
-
+          if (planVencido !== null) planVencido.activo = false;
           await ventas.setPlan_Pago(plan);
           await ventas.setColegio(idColegio);
 
@@ -87,10 +98,9 @@ router.post("/notification", async (req, res) => {
             await colegio.save();
           }
           ventas.vencimientoPlan = fecha;
-          console.log(colegio.mes_prueba + "----->" + fecha);
           await colegio.setPlan_Pago(plan);
           await ventas.save();
-          await planVencido.save();
+          if (planVencido !== null) await planVencido.save();
           // AQUI SE MANDA  EL CORREO DE QUE SE COMPRO EXITOSAMENTE <-----------------------
           // la informacion la optienes de colegio.nombre_colegio """colegio.nombre del plan"""
           // planNombre
