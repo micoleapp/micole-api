@@ -88,5 +88,6 @@ router.get("/:Colegio_id", async (req, res) => {
   } catch (err) {
     res.json({ err });
   }
-}),
-  (module.exports = router);
+});
+
+module.exports = router;
