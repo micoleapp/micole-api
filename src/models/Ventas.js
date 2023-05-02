@@ -29,6 +29,9 @@ module.exports = (sequelize) => {
       months: {
         type: DataTypes.INTEGER,
       },
+      accumulated_months: {
+        type: DataTypes.INTEGER,
+      },
       InicioPlan: {
         type: DataTypes.DATEONLY,
       },

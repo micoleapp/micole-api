@@ -1,5 +1,5 @@
 const { mercadopago } = require("../mercadoPago.js");
-const { Colegio, Plan_Pago } = require("../db");
+const { Colegio, Plan_Pago, Ventas } = require("../db");
 const { NGROK_URL } = process.env;
 
 const payController = async (req, res) => {
@@ -8,17 +8,32 @@ const payController = async (req, res) => {
   const colegio = await Colegio.findByPk(`${data.colegioId}`);
   const id_colegio = colegio.id;
   const nombre_colegio = colegio.nombre_colegio;
-  const direccion = colegio.direccion;
+  let direccion = "igual";
   const ruc = colegio.ruc;
+  const id_plan_anterior = colegio.PlanPagoId;
   const email = data.email;
+  var cantidadMeses = data.cantidad;
 
   const plan = await Plan_Pago.findByPk(`${data.planPagoId}`);
   const id_plan = data.planPagoId;
   const nombre_plan_pago = plan.nombre_plan_pago;
-  const precio = plan.precio;
- 
-  // caso 3 compra un diferente plan supperior con el plan anterior vigente
- 
+  var precio = plan.precio;
+
+  if (id_plan_anterior < id_plan) {
+    // Funciona cuando se hace UPDATE de plan
+    const PlanAnterior = await Plan_Pago.findByPk(id_plan_anterior);
+    const mesesAcumulados = await Ventas.findOne({
+      where: {
+        ColegioId: data.colegioId,
+        activo: true,
+      },
+    });
+    const diferencia = precio - PlanAnterior.precio;
+    precio = diferencia;
+    cantidadMeses = mesesAcumulados.accumulated_months;
+    direccion = "diferente";
+    console.log("ESTA ES LA DIFERENCIA---->" + diferencia);
+  }
 
   let preference = {
     binary_mode: true,
@@ -34,26 +49,26 @@ const payController = async (req, res) => {
         id: id_plan,
         title: nombre_plan_pago,
         unit_price: precio,
-        quantity: data.cantidad,
+        quantity: cantidadMeses,
+        description: direccion,
       },
     ],
     external_reference: id_colegio,
     additional_info: email,
     back_urls: {
       //definir las verdaderas aca
-      success: "https://micole.vercel.app/#/dashboardschool",
-      failure:
-        "https://micole.vercel.app/#/dashboardschool",
-      pending: "https://micole.vercel.app/#/dashboardschool",
+      success: "https://www.micole.com.pe/#/dashboardschool",
+      failure: "https://www.micole.com.pe/#/dashboardschool",
+      pending: "https://www.micole.com.pe/#/dashboardschool",
     },
-    notification_url:`${NGROK_URL}/payments/notification`,
+    notification_url: `https://8b4e-177-246-245-112.ngrok-free.app/payments/notification`,
     // notification_url: `${NGROK_URL}/payments/notification`,
   };
   console.log(preference.payer);
   console.log(preference.items);
   mercadopago.preferences
     .create(preference)
-    //le pasamos las preference que definimos de linea 35 a 72
+    // le pasamos las preference que definimos de linea 35 a 72
     .then(function (response) {
       console.log(response.body.init_point);
       res.send(

@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
             msg: "El nombre solo puede contener letras, acentos, tildes y espacios",
           },
           len: {
-            args: [3, 60],
+            args: [2, 60],
             msg: "El nombre debe tener entre 3 y 60 letras",
           },
         },
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
             msg: "El apellido solo puede contener letras, acentos, tildes y espacios",
           },
           len: {
-            args: [6, 60],
+            args: [2, 60],
             msg: "El apellido debe tener entre 6 y 60 letras",
           },
         },
@@ -187,10 +187,10 @@ module.exports = (sequelize) => {
       createdAt: {
         type: DataTypes.DATEONLY,
         allowNull: true,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
     },
-    
+
     {
       timestamps: false,
     }
