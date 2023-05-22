@@ -3,6 +3,7 @@ const moment = require("moment");
 var actualDate = moment().format("DD/MM/YYYY HH:mm:ss A");
 /* Mail Templates */
 const confirmationSignUpTemplate = require("./Auth/confirmationSignUpTemplate");
+const resetPassword = require("./Auth/resetPassword");
 const informeMailUser = require("./Informes/informeMailUser");
 const informeMailAdmin = require("./Informes/informeMailAdmin");
 const solicitudCita = require("./Citas/User/solicitudCita");
@@ -50,6 +51,18 @@ const sendMailSignUp = async(user, type) => {
       html: confirmationSignUpTemplate(user, type, actualDate)
     });
   }
+  return;
+};
+
+
+const sendMailForgotPassword = async(email, link) => {
+  const transporter = createTransport();
+  await transporter.sendMail({
+    from: '"MiCole App" <micole.test.app@gmail.com>',
+    to: `${email}`,
+    subject: "Restablecimiento de Contraseña - MiCole",
+    html: resetPassword(link)
+  });
   return;
 };
 
@@ -160,3 +173,4 @@ exports.sendMailVOfrecida = (user, colegio) => sendMailVOfrecida(user, colegio);
 exports.sendMailVAceptada = (user, colegio) => sendMailVAceptada(user, colegio);
 exports.sendPaymentSuccess = (colegio, plan) => sendPaymentSuccess(colegio, plan);
 exports.sendPaymentCanceled = (colegio, plan) => sendPaymentCanceled(colegio, plan);
+exports.sendMailForgotPassword = (email, link) => sendMailForgotPassword(email, link);
