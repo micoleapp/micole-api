@@ -275,10 +275,54 @@ const putAuth = async (req, res, next) => {
   }
 };
 
+const forgotPassword = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const authInstance = await Auth.findOne({ where: { email } });
+    if (!authInstance) {
+      return next({
+        statusCode: 404,
+        message: 'El usuario ingresado no existe',
+      });
+    }
+    const token = generateToken(authInstance.id);
+    const url = `https://micole.com.pe/reset-password/${token.token}`;
+    mailer.sendMailForgotPassword(authInstance.email, url);
+    return res.status(200).send({ message: 'Email enviado' });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const resetPassword = async (req, res, next) => {
+  const { password } = req.body;
+  const tokenUser = req.user;
+  if (!tokenUser) {
+    return next(401);
+  }
+  try {
+    const authInstance = await Auth.findByPk(tokenUser.id);
+    if (!authInstance) {
+      return next({
+        statusCode: 400,
+        message: 'El usuario no existe en la BD',
+      });
+    }
+    authInstance.password = password;
+    await authInstance.save();
+    return res.status(200).send({ message: 'Contraseña actualizada' });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+
 module.exports = {
   signIn,
   signUp,
   editAuthById,
   getAuth,
   putAuth,
+  forgotPassword,
+  resetPassword
 };
