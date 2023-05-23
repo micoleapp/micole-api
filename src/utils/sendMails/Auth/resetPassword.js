@@ -1,4 +1,4 @@
-const resetPassword = (link) => {
+const resetPassword = (otp) => {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -640,11 +640,17 @@ const resetPassword = (link) => {
                                 Recibimos una solicitud para restablecer tu contraseña. Si no realizaste esta solicitud, puedes ignorar este mensaje.
                               </p>
                               <p style="margin-top: 0px; margin-bottom: 20px">
-                                Para restablecer tu contraseña, <b>haz clic en el siguiente enlace </b>  o cópialo y pégalo en tu navegador:
+                              A continuación te proporcionaremos un número de 4 digitos para que puedas ingresar y establecer tu nueva contraseña.
                               </p>
-                              <p style="margin-top: 0px; margin-bottom: 20px">
-                                ${link}
-                              </p>
+                              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tbody>
+                                <tr>
+                                  <td width="284" class="o_bg-ultra_light o_br o_text-xs o_sans o_px-xs o_py" align="center" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 14px;line-height: 21px;background-color: #ebf5fa;border-radius: 4px;padding-left: 8px;padding-right: 8px;padding-top: 16px;padding-bottom: 16px;">
+                                    <p class="o_text-dark" style="color: #242b3d;margin-top: 0px; ; margin-bottom: 0px;"><strong style="color:#126de5; font-size: 17px;">${otp}</strong></p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                               <p>
                                 Si necesitas ayuda o tienes alguna pregunta, no dudes en contactar a nuestro equipo de soporte.
                               </p>

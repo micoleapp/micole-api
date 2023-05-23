@@ -33,7 +33,10 @@ const createTransport = () => {
     auth:{
       user: "micole.test.app@gmail.com",
       pass: process.env.GMAIL_MAILS_PASS,
-    }
+    },
+    tls: {
+      rejectUnauthorized: false
+  }
   });
   transport.verify().then( ()=>{
     console.log("Listo para enviar emails");
@@ -55,7 +58,7 @@ const sendMailSignUp = async(user, type) => {
 };
 
 
-const sendMailForgotPassword = async(email, link) => {
+/*const sendMailForgotPassword = async(email, link) => {
   const transporter = createTransport();
   await transporter.sendMail({
     from: '"MiCole App" <micole.test.app@gmail.com>',
@@ -64,7 +67,20 @@ const sendMailForgotPassword = async(email, link) => {
     html: resetPassword(link)
   });
   return;
+};*/
+
+const sendMailForgotPassword = async(mail, otp) => {
+  const transporter = createTransport();
+  await transporter.sendMail({
+    from: '"MiCole App" <micole.test.app@gmail.com>',
+    to: `${mail}`,
+    subject: "Restablecimiento de Contraseña - MiCole",
+    html: resetPassword(otp)
+  });
+  return;
 };
+
+
 
 const sendMailInforme = async(user) => {
   const transporter = createTransport();
@@ -173,4 +189,4 @@ exports.sendMailVOfrecida = (user, colegio) => sendMailVOfrecida(user, colegio);
 exports.sendMailVAceptada = (user, colegio) => sendMailVAceptada(user, colegio);
 exports.sendPaymentSuccess = (colegio, plan) => sendPaymentSuccess(colegio, plan);
 exports.sendPaymentCanceled = (colegio, plan) => sendPaymentCanceled(colegio, plan);
-exports.sendMailForgotPassword = (email, link) => sendMailForgotPassword(email, link);
+exports.sendMailForgotPassword = (mail, otp) => sendMailForgotPassword(mail, otp);

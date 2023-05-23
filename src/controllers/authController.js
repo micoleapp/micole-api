@@ -277,6 +277,7 @@ const putAuth = async (req, res, next) => {
 
 const forgotPassword = async (req, res, next) => {
   const { email } = req.body;
+  console.log(email)
   try {
     const authInstance = await Auth.findOne({ where: { email } });
     if (!authInstance) {
@@ -317,6 +318,60 @@ const resetPassword = async (req, res, next) => {
 };
 
 
+
+
+const passRecovery = async (req, res, next) => {
+  const {mail, otp} = req.body;
+  console.log(mail);
+  console.log(otp);
+  if(mail){
+  try {
+
+    const isUserRegistered = await Auth.findOne({where: { email: mail }  });
+    if(isUserRegistered){
+      mailer.sendMailForgotPassword(mail, otp);
+      console.log(isUserRegistered)
+      return res
+          .status(200)
+          .send( "OK" );
+    }
+    else{
+      res.send("usuario inexistente")
+    }
+   
+  } catch (error) {
+    res.send({error})
+  }
+}
+}
+
+const passRecoveryNewPassword = async (req, res) => {
+     
+  const {mail, password} = req.body;
+   console.log(mail);
+   console.log(password);
+   if ( mail && password){
+   try{
+   const auth = await Auth.findOne({where: { email: mail }  });
+   auth.password = password;
+   await auth.save();
+   return res
+   .status(200)
+   .send( "OK" );
+   }
+   catch(error) {
+    res.send({error})}
+}
+else{
+  res.send("usuario o contraseña no encontrados")
+}
+}
+
+
+
+
+
+
 module.exports = {
   signIn,
   signUp,
@@ -324,5 +379,7 @@ module.exports = {
   getAuth,
   putAuth,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  passRecovery,
+  passRecoveryNewPassword
 };
