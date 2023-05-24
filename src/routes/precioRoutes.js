@@ -18,9 +18,9 @@ router.get("/", async (req, res) => {
       [precios[0].dataValues.cuota_pension_min, precios[0].dataValues.cuota_pension_max],
       [precios[0].dataValues.cuota_ingreso_min, precios[0].dataValues.cuota_ingreso_max]
     ];
-    res.send(resultado);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(200).send(resultado);
+  } catch (error) {
+    return next(error);
   }
 });
 

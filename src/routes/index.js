@@ -2,32 +2,32 @@ const { Router } = require("express");
 const pkg = require("../../package.json");
 
 const authRouter = require("./authRoutes.js");
-const colegioRouter = require("./colegio.js");
-const departamentoRouter = require("./departamento.js");
-const provinciaRouter = require("./provincia.js");
-const distritoRouter = require("./distritoRouter.js");
-const paisRouter = require("./pais.js");
+const colegioRouter = require("./colegioRoutes.js");
+const departamentoRouter = require("./departamentoRoutes.js");
+const provinciaRouter = require("./provinciaRoutes.js");
+const distritoRouter = require("./distritoRoutes.js");
+const paisRouter = require("./paisRoutes.js");
 const userRouter = require("./userRoutes.js");
-const categoriaRouter = require("./categoria.js");
-const vacanteRouter = require("./vacanteRouter.js");
+const categoriaRouter = require("./categoriaRoutes.js");
+const vacanteRouter = require("./vacanteRoutes.js");
 const horarioRouter = require("./horarioRoutes.js");
-const infraestructuraRouter = require("./infraestructura.js");
-const gradoRouter = require("./grado.js");
-const nivelRouter = require("./nivel.js");
-const afiliacionRouter = require("./AfiliacionRoutes.js");
-const citaRouter = require("./citaRouter");
+const infraestructuraRouter = require("./infraestructuraRoutes.js");
+const gradoRouter = require("./gradoRoutes.js");
+const nivelRouter = require("./nivelRoutes.js");
+const afiliacionRouter = require("./afiliacionRoutes.js");
+const citaRouter = require("./citaRoutes.js");
 const paymentRouter = require("./payment");
 const ventasRouter = require("./ventas");
-const reviewRouter = require("./reviewRouter");
-const informeRouter = require("./informeRouter");
-const metodosRouter = require("./metodos");
-const dificultadesRouter = require("./dificultades");
+const reviewRouter = require("./reviewRoutes");
+const informeRouter = require("./informeRoutes");
+const metodosRouter = require("./metodoRoutes");
+const dificultadesRouter = require("./dificultadRoutes");
 const eventoRouter = require("./eventoRoutes");
 const reportesRouter = require("./reportesRoutes");
 const vencidosRouter = require("./vencidos");
 const listaRouter = require("./listaDeEspera");
-const preciosRouter = require("./PreciosRoutes");
-const idiomasRouter = require("./idiomas");
+const preciosRouter = require("./precioRoutes");
+const idiomasRouter = require("./idiomaRoutes");
 const comparadorRouter = require("./comparador");
 
 const router = Router();
@@ -59,7 +59,7 @@ router.use("/precios", preciosRouter);
 router.use("/idiomas", idiomasRouter);
 router.use("/comparador", comparadorRouter);
 
-router.get("/", (req, res) =>
+router.get("/", (_, res) =>
   res.json({ name: pkg.name, version: pkg.version })
 );
 router.use("/auth", authRouter);
