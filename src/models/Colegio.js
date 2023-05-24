@@ -129,6 +129,11 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
 
+      brochure: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
       area: {
         type: DataTypes.INTEGER,
         allowNull: true,
