@@ -1,14 +1,8 @@
-const { Idioma } = require('../db');
-const cache = require('../helpers/cacheGlobalInstance');
+const idiomaRepository = require('../repositories/idiomaRepository');
 
-const getIdiomas = async (req, res, next) => {
+const getIdiomas = async (_, res, next) => {
   try {
-    const key = req.originalUrl || req.url;
-    const idiomas = await Idioma.findAll({
-      attributes: ["id", "nombre_idioma"],
-      order: [["nombre_idioma", "ASC"]],
-    });
-    cache.set(key, idiomas, 86400); // Almacenamos la respuesta en caché durante 1 día
+    const idiomas = await idiomaRepository.getAllIdiomas();
     res.status(200).send(idiomas);
   } catch (error) {
     return next(error);
@@ -18,16 +12,8 @@ const getIdiomas = async (req, res, next) => {
 const createIdioma = async (req, res, next) => {
   const { nombre_idioma } = req.body;
   try {
-    const indexIdioma = await Idioma.findOne({
-      order: [["id", "DESC"]],
-    });
-    const [idioma, created] = await Idioma.findOrCreate({
-      where: {
-        id: Number(indexIdioma.id) + 1,
-        nombre_idioma: nombre_idioma,
-      },
-    });
-    if (created) {
+    const idioma = await idiomaRepository.createIdioma(nombre_idioma);
+    if (idioma) {
       res.status(200).json(idioma);
     } else {
       return next({
@@ -41,29 +27,28 @@ const createIdioma = async (req, res, next) => {
 };
 
 const updateIdioma = async (req, res, next) => {
+  const { id } = req.params;
+  const { nombre_idioma } = req.body;
   try {
-    const { id } = req.params;
-    const { nombre_idioma } = req.body;
-    const editedIdioma = await Idioma.update(
-      {
-        nombre_idioma: nombre_idioma,
-      },
-      { where: { id: id } }
-    );
-    res.status(200).json(editedIdioma);
+    await idiomaRepository.updateIdioma(id, nombre_idioma);
+    res.status(200).json({ message: "Idioma Actualizado" });
   } catch (error) {
     return next(error);
   }
 };
 
 const deleteIdioma = async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
-    const deletedIdioma = await Idioma.findOne({
-      where: { id: id },
-    });
-    await deletedIdioma.destroy();
-    res.status(200).send({ message: "Idioma borrado" });
+    const deleted = await idiomaRepository.deleteIdioma(id);
+    if (deleted) {
+      res.status(200).send({ message: 'Idioma borrado' });
+    } else {
+      return next({
+        statusCode: 404,
+        message: 'Idioma no encontrado',
+      });
+    }
   } catch (error) {
     return next(error);
   }

@@ -10,7 +10,7 @@ const {
   updateColegio,
   updateMultimedia,
   changeStatusColegio,
-} = require('../controllers/departamentoController copy.js');
+} = require('../controllers/colegioController');
 // const getComponentData = require("../funciones/getComponentData.js");
 // const ratingProm = require("../funciones/ratingProm.js");
 
