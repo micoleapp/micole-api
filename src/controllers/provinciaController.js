@@ -1,11 +1,8 @@
-const { Provincia } = require('../db');
-const cache = require('../helpers/cacheGlobalInstance');
+const provinciaRepository = require("../repositories/provinciaRepository");
 
-const getProvincias = async (req, res, next) => {
+const getProvincias = async (_, res, next) => {
   try {
-    const key = req.originalUrl || req.url;
-    const provincias = await Provincia.findAll();
-    cache.set(key, provincias, 86400); // Almacenamos la respuesta en caché durante 1 día
+    const provincias = await provinciaRepository.getAllProvincias();
     res.status(200).send(provincias);
   } catch (error) {
     return next(error);
@@ -15,17 +12,8 @@ const getProvincias = async (req, res, next) => {
 const createProvincia = async (req, res, next) => {
   const { nombre_provincia,departamentoId } = req.body;
   try {
-    const indexProvincia = await Provincia.findOne({
-      order: [["id", "DESC"]],
-    });
-    const [provincia, created] = await Provincia.findOrCreate({
-      where: {
-        id:Number(indexProvincia.id)+1,
-        nombre_provincia: nombre_provincia,
-      },
-    });
-    await provincia.setDepartamento(departamentoId);
-    if (created) {
+    const provincia = await provinciaRepository.createProvincia(departamentoId, nombre_provincia);
+    if (provincia) {
       res.status(200).json(provincia);
     } else {
       return next({
@@ -33,36 +21,40 @@ const createProvincia = async (req, res, next) => {
         message: 'Provincia existente',
       });
     }
+
   } catch (error) {
     return next(error);
   }
 };
 
 const updateProvincia = async (req, res, next) => {
+  const { id } = req.params;
+  const { nombre_provincia,departamentoId } = req.body;
   try {
-    const { id } = req.params;
-    const { nombre_provincia,departamentoId } = req.body;
-    const editedProvincia = await Provincia.update(
-      {
-        nombre_provincia: nombre_provincia,
-        DepartamentoId:departamentoId
-      },
-      { where: { id: id } }
-    );
-    res.status(200).json(editedProvincia);
+    const result = await provinciaRepository.updateProvincia(id,departamentoId, nombre_provincia);
+    if (result === false) {
+      return next({
+        statusCode: 400,
+        message: 'El registro solicitado no existe',
+      });
+    }
+    res.status(200).json({ message: "Provincia Actualizada" });
   } catch (error) {
     return next(error);
   }
 };
 
 const deleteProvincia = async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
-    const deleteProvincia = await Provincia.findOne({
-      where: { id: id },
-    });
-    await deleteProvincia.destroy();
-    res.status(200).send({ message: "Provincia borrada" });
+    const result = await provinciaRepository.deleteProvincia(id);
+    if (result === false) {
+      return next({
+        statusCode: 400,
+        message: 'El registro solicitado no existe',
+      });
+    }
+    res.status(200).json({ message: "Provincia Eliminada" });
   } catch (error) {
     return next(error);
   }

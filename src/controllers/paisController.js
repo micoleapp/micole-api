@@ -1,11 +1,8 @@
-const { Pais } = require('../db');
-const cache = require('../helpers/cacheGlobalInstance');
+const paisRepository = require("../repositories/paisRepository");
 
-const getPaises = async (req, res, next) => {
+const getPaises = async (_, res, next) => {
   try {
-    const key = req.originalUrl || req.url;
-    const paises = await Pais.findAll();
-    cache.set(key, paises, 86400); // Almacenamos la respuesta en caché durante 1 día
+    const paises = await paisRepository.getAllPaises();
     res.status(200).send(paises);
   } catch (error) {
     return next(error);
@@ -15,21 +12,13 @@ const getPaises = async (req, res, next) => {
 const createPais = async (req, res, next) => {
   const { nombre_pais } = req.body;
   try {
-    const indexPais = await Pais.findOne({
-      order: [["id", "DESC"]],
-    });
-    const [pais, created] = await Pais.findOrCreate({
-      where: {
-        id:Number(indexPais.id)+1,
-        nombre_pais: nombre_pais,
-      },
-    });
-    if (created) {
+    const pais = await paisRepository.createPais(nombre_pais);
+    if (pais) {
       res.status(200).json(pais);
     } else {
       return next({
         statusCode: 501,
-        message: 'Pais existente',
+        message: "País existente",
       });
     }
   } catch (error) {
@@ -38,29 +27,33 @@ const createPais = async (req, res, next) => {
 };
 
 const updatePais = async (req, res, next) => {
+  const { id } = req.params;
+  const { nombre_pais } = req.body;
   try {
-    const { id } = req.params;
-    const { nombre_pais } = req.body;
-    const editedPais = await Pais.update(
-      {
-        nombre_pais: nombre_pais,
-      },
-      { where: { id: id } }
-    );
-    res.status(200).json(editedPais);
+    const result = await paisRepository.updatePais(id, nombre_pais);
+    if (result === false) {
+      return next({
+        statusCode: 400,
+        message: "El registro solicitado no existe",
+      });
+    }
+    res.status(200).json({ message: "País Actualizado" });
   } catch (error) {
     return next(error);
   }
 };
 
 const deletePais = async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
-    const deletePais = await Pais.findOne({
-      where: { id: id },
-    });
-    await deletePais.destroy();
-    res.status(200).send({ message: "País borrado" });
+    const result = await paisRepository.deletePais(id);
+    if (result === false) {
+      return next({
+        statusCode: 400,
+        message: "El registro solicitado no existe",
+      });
+    }
+    res.status(200).json({ message: "País Eliminado" });
   } catch (error) {
     return next(error);
   }
