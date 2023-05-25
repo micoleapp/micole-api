@@ -18,7 +18,11 @@ const getAllIdiomas = async () => {
 };
 
 const getIdiomaById = async (id) => {
-  return Idioma.findByPk(id);
+  const idioma = await Idioma.findByPk(id);
+  if (idioma) {
+    return idioma;
+  }
+  return null;
 };
 
 const createIdioma = async (nombre_idioma) => {
@@ -29,20 +33,21 @@ const createIdioma = async (nombre_idioma) => {
   const [idioma, created] = await Idioma.findOrCreate({
     where: {
       id: Number(indexIdioma.id) + 1,
-      nombre_idioma: nombre_idioma,
+      nombre_idioma,
     },
   });
-
   return created ? idioma : null;
 };
 
 const updateIdioma = async (id, nombre_idioma) => {
-  return Idioma.update(
-    {
-      nombre_idioma: nombre_idioma,
-    },
-    { where: { id: id } }
-  );
+  const idioma = await Idioma.findByPk(id);
+  if (idioma) {
+    await idioma.update({
+      nombre_idioma,
+    });
+    return true;
+  }
+  return false;
 };
 
 const deleteIdioma = async (id) => {

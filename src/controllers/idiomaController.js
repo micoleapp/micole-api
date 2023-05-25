@@ -26,11 +26,33 @@ const createIdioma = async (req, res, next) => {
   }
 };
 
+const getIdiomaById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const idioma = await idiomaRepository.getIdiomaById(id);
+    if (!idioma) {
+      return next({
+        statusCode: 404,
+        message: 'El idioma solicitado no existe',
+      });
+    }
+    res.status(200).json(idioma);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 const updateIdioma = async (req, res, next) => {
   const { id } = req.params;
   const { nombre_idioma } = req.body;
   try {
-    await idiomaRepository.updateIdioma(id, nombre_idioma);
+    const result = await idiomaRepository.updateIdioma(id, nombre_idioma);
+    if (result === false) {
+      return next({
+        statusCode: 400,
+        message: 'El registro solicitado no existe',
+      });
+    }
     res.status(200).json({ message: "Idioma Actualizado" });
   } catch (error) {
     return next(error);
@@ -40,15 +62,14 @@ const updateIdioma = async (req, res, next) => {
 const deleteIdioma = async (req, res, next) => {
   const { id } = req.params;
   try {
-    const deleted = await idiomaRepository.deleteIdioma(id);
-    if (deleted) {
-      res.status(200).send({ message: 'Idioma borrado' });
-    } else {
+    const result = await idiomaRepository.deleteIdioma(id);
+    if (result === false) {
       return next({
-        statusCode: 404,
-        message: 'Idioma no encontrado',
+        statusCode: 400,
+        message: 'El registro solicitado no existe',
       });
     }
+    res.status(200).json({ message: "Idioma Eliminado" });
   } catch (error) {
     return next(error);
   }
@@ -56,6 +77,7 @@ const deleteIdioma = async (req, res, next) => {
 
 module.exports = {
   getIdiomas,
+  getIdiomaById,
   createIdioma,
   deleteIdioma,
   updateIdioma,
