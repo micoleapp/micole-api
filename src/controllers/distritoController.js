@@ -1,8 +1,6 @@
-const { Distrito } = require('../db');
-const cache = require('../helpers/cacheGlobalInstance');
 const distritoRepository = require('../repositories/distritoRepository');
 
-const getDistritos = async (req, res, next) => {
+const getDistritos = async (_, res, next) => {
   try {
     const distritos = await distritoRepository.getAllDistritos();
     res.status(200).send(distritos);
