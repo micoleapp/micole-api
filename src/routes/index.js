@@ -1,6 +1,4 @@
 const { Router } = require("express");
-const pkg = require("../../package.json");
-
 const authRouter = require("./authRoutes.js");
 const colegioRouter = require("./colegioRoutes.js");
 const departamentoRouter = require("./departamentoRoutes.js");
@@ -58,11 +56,10 @@ router.use("/lista", listaRouter);
 router.use("/precios", preciosRouter);
 router.use("/idiomas", idiomasRouter);
 router.use("/comparador", comparadorRouter);
-
-router.get("/", (_, res) =>
-  res.json({ name: pkg.name, version: pkg.version })
-);
 router.use("/auth", authRouter);
 router.use("/users", userRouter);
+
+// Configuración de Swagger UI
+/* router.use('/', swaggerUI, swaggerJsdoc); */
 
 module.exports = router;

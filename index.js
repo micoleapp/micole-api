@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { swaggerDocs } = require("./src/helpers/swaggerConfig");
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const insertDistritos = require("./src/utils/insertDistritos");
@@ -13,4 +14,5 @@ conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
     console.log(`⇒ listening at port ${process.env.PORT}`);
   });
+  swaggerDocs(server, process.env.PORT);
 });
