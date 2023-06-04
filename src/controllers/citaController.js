@@ -250,10 +250,26 @@ const createCita = async (req, res, next) => {
     añoIngreso,
     grado,
     ColegioId,
+    dnd,
   } = req.body;
   try {
     const gradoId = await Grado.findOne({ where: { nombre_grado: grado } });
     const fechaCita = moment(date, ['DD/MM/YYYY', 'YYYY-MM-DD']);
+    if(dnd){
+      const dndCita = await Cita.create({
+        fecha_cita: fechaCita,
+        hora_cita: time,
+        modalidad: modo,
+        nombre: nombre,
+        email: correo,
+        telefono: celular,
+        añoIngreso,
+        GradoId: gradoId.id,
+        ColegioId,
+        activo: true,
+      });
+      res.status(200).json(dndCita);
+    }
     const ifExists = await Cita.findOne({
       where: {
         email: correo,
@@ -264,7 +280,6 @@ const createCita = async (req, res, next) => {
     });
 
     const colegioNombre = await Colegio.findByPk(ColegioId);
-console.log( colegioNombre.nombre_colegio)
     if (ifExists) {
       return next({
         statusCode: 400,
